@@ -1,22 +1,35 @@
-var div = $("<div></div>");
-var gridsize = 32;
+var div = $("<div></div");
 
 function main(){
-	var sketchsize = 960/gridsize;
-  $(".sketch").css("width", sketchsize+"px");
-  $(".sketch").css("height", sketchsize+"px");
-  for(var i=0; i<(Math.pow(gridsize, 2)); i++){
-  		div = $("<div id="+i+" class= 'sketch'></div")
-      $(".wrapper").append(div);
-  }
+	//createGrid(16);
+  $(".clear").click(function(){
+  	$(".sketch").css("background-color", "white");
+  });
+  $(".reset").click(function(){
+  	$(".sketch").css("background-color", "white");
+    var newsize = parseInt(prompt("Enter size of grid: ", "32"));
+    createGrid(newsize);
+    main();
+  });
   $(".sketch").hover(function(){
     $(this).css("background-color", "black");
     }, function(){
     //$(this).css("background-color", "black");
-});
-	$(".clear").click(function(){
-  	$(".sketch").css("background-color", "white");
-  });
+	});
 }
 
-$(document).ready(main);
+function createGrid(size){
+	$(".wrapper").empty();
+  var sketchsize = 640/size;
+  for(var i=0; i<(Math.pow(size, 2)); i++){
+  		div = $("<div id="+i+" class= 'sketch'></div");
+      $(".wrapper").append(div);
+  }
+  $(".sketch").css("width", sketchsize);
+  $(".sketch").css("height", sketchsize);
+}
+
+$(document).ready(function(){
+	createGrid(16);
+  main();
+});
