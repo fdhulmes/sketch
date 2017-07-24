@@ -3,10 +3,10 @@ var div = $("<div></div");
 function main(){
 	//createGrid(16);
   $(".clear").click(function(){
-  	$(".sketch").css("background-color", "white");
+  	$(".sketch").css("background-color", "#E8E8E8");
   });
   $(".reset").click(function(){
-  	$(".sketch").css("background-color", "white");
+  	$(".sketch").css("background-color", "#E8E8E8");
     var newsize = parseInt(prompt("Enter size of grid: ", "32"));
     createGrid(newsize);
     main();
